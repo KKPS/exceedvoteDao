@@ -1,7 +1,6 @@
 package kkps.exceedvotedao.dao.jpa;
 
 import java.util.List;
-
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import kkps.exceedvotedao.dao.UserDao;
@@ -20,6 +19,7 @@ public class JpaUserDao implements UserDao {
 		return em.find(User.class, id);
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<User> findAll() {
 		String query = "SELECT u FROM User u";

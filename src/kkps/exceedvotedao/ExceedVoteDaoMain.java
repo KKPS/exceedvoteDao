@@ -1,9 +1,7 @@
 package kkps.exceedvotedao;
 
 import java.util.List;
-import kkps.exceedvotedao.*;
 import kkps.exceedvotedao.dao.*;
-import kkps.exceedvotedao.dao.jpa.*;
 import kkps.exceedvotedao.models.*;
 
 /**

@@ -1,8 +1,6 @@
 package kkps.exceedvotedao.models;
 
 import java.io.Serializable;
-import java.lang.Long;
-import java.lang.String;
 import javax.persistence.*;
 
 /**

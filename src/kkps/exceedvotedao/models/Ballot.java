@@ -1,9 +1,7 @@
 package kkps.exceedvotedao.models;
 
 import java.io.Serializable;
-import java.lang.Long;
 import javax.persistence.*;
-
 import kkps.exceedvotedao.models.Project;
 import kkps.exceedvotedao.models.Question;
 import kkps.exceedvotedao.models.User;

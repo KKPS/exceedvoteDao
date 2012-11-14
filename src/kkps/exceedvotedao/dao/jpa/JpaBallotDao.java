@@ -19,15 +19,16 @@ public class JpaBallotDao implements BallotDao {
 		return em.find(Ballot.class, id);
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<Ballot> findAll() {
 		String query = "SELECT b FROM Ballot b";
 		return em.createQuery(query).getResultList();
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<Ballot> findByUser(User user) {
-		// Long id = user.getId();
 		Query query = em.createQuery("SELECT b FROM Ballot b WHERE b.user= :user");
 		query.setParameter("user", user);
 		return query.getResultList();
