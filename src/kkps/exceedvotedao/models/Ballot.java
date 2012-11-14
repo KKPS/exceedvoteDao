@@ -21,7 +21,6 @@ public class Ballot implements Serializable {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
 	@ManyToOne
-	@JoinColumn(name="user_id")
 	private User user;
 	private Project project;
 	private Question question;
