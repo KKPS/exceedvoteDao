@@ -4,7 +4,6 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
-
 import kkps.exceedvotedao.dao.UserDao;
 import kkps.exceedvotedao.models.User;
 
@@ -18,8 +17,7 @@ public class JpaUserDao implements UserDao {
 
 	@Override
 	public User findById(int id) {
-		// TODO Auto-generated method stub
-		return null;
+		return em.find(User.class, id);
 	}
 
 	@Override
@@ -38,8 +36,16 @@ public class JpaUserDao implements UserDao {
 
 	@Override
 	public void delete(User user) {
-		// TODO Auto-generated method stub
-		
+		EntityTransaction tx = em.getTransaction();
+		tx.begin();
+		em.remove(user);
+		tx.commit();
+	}
+
+	@Override
+	public User findByUser(String username) {
+		String query = "SELECT u FROM User u WHERE u.username='" + username + "'";
+		return (User) em.createQuery(query).getSingleResult();
 	}
 
 }

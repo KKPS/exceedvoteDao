@@ -16,7 +16,7 @@ import kkps.exceedvotedao.models.User;
 
 public class Ballot implements Serializable {
 
-	   
+
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
@@ -30,13 +30,13 @@ public class Ballot implements Serializable {
 	public Ballot() {
 		super();
 	}   
-	
+
 	public Ballot(User user, Project project, Question question) {
 		this.user = user;
 		this.project = project;
 		this.question = question;
 	}
-	
+
 	public Long getId() {
 		return this.id;
 	}
@@ -44,7 +44,7 @@ public class Ballot implements Serializable {
 	public void setId(Long id) {
 		this.id = id;
 	}   
-	
+
 	public User getUser() {
 		return this.user;
 	}
@@ -52,7 +52,7 @@ public class Ballot implements Serializable {
 	public void setUser(User user) {
 		this.user = user;
 	}   
-	
+
 	public Project getProject() {
 		return this.project;
 	}
@@ -60,7 +60,7 @@ public class Ballot implements Serializable {
 	public void setProject(Project project) {
 		this.project = project;
 	}   
-	
+
 	public Question getQuestion() {
 		return this.question;
 	}
@@ -68,5 +68,9 @@ public class Ballot implements Serializable {
 	public void setQuestion(Question question) {
 		this.question = question;
 	}
-   
+
+	public String toString() {
+		return id + " " + user.getUsername() + "'s ballot voted " + project.getName() + " in " + question.getQuestion();
+	}
+
 }

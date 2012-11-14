@@ -11,6 +11,10 @@ public class JpaDaoFactory extends DaoFactory {
 	
 	private UserDao userDao;
 	
+	private ProjectDao projectDao;
+	
+	private QuestionDao questionDao;
+	
 	private EntityManagerFactory emf;
 	
 	private EntityManager em;
@@ -32,6 +36,20 @@ public class JpaDaoFactory extends DaoFactory {
 			userDao = new JpaUserDao(em);
 		}
 		return userDao;
+	}
+	
+	public ProjectDao getProjectDao() {
+		if (projectDao == null) {
+			projectDao = new JpaProjectDao(em);
+		}
+		return projectDao;
+	}
+	
+	public QuestionDao getQuestionDao() {
+		if (questionDao == null) {
+			questionDao = new JpaQuestionDao(em);
+		}
+		return questionDao;
 	}
 
 }

@@ -1,9 +1,10 @@
 package kkps.exceedvotedao.dao.jpa;
 
 import java.util.List;
-import javax.persistence.EntityManager;
+import javax.persistence.*;
 import kkps.exceedvotedao.dao.BallotDao;
 import kkps.exceedvotedao.models.Ballot;
+import kkps.exceedvotedao.models.User;
 
 public class JpaBallotDao implements BallotDao {
 	
@@ -15,32 +16,37 @@ public class JpaBallotDao implements BallotDao {
 
 	@Override
 	public Ballot findById(int id) {
-		// TODO Auto-generated method stub
-		return null;
+		return em.find(Ballot.class, id);
 	}
 
 	@Override
 	public List<Ballot> findAll() {
-		// TODO Auto-generated method stub
-		return null;
+		String query = "SELECT b FROM Ballot b";
+		return em.createQuery(query).getResultList();
 	}
 
 	@Override
-	public List<Ballot> findByUser(String query) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Ballot> findByUser(User user) {
+		// Long id = user.getId();
+		Query query = em.createQuery("SELECT b FROM Ballot b WHERE b.user= :user");
+		query.setParameter("user", user);
+		return query.getResultList();
 	}
 
 	@Override
 	public void save(Ballot ballot) {
-		// TODO Auto-generated method stub
-		
+		EntityTransaction tx = em.getTransaction();
+		tx.begin();
+		em.persist(ballot);
+		tx.commit();
 	}
 
 	@Override
 	public void delete(Ballot ballot) {
-		// TODO Auto-generated method stub
-		
+		EntityTransaction tx = em.getTransaction();
+		tx.begin();
+		em.persist(ballot);
+		tx.commit();
 	}
 
 }

@@ -20,7 +20,9 @@ public class ExceedVoteDaoMain {
 	 */
 	public static void main(String[] args) {
 		// Begin UserDao test
-		testUserDao();
+		// testUserDao();
+		// Begin BallotDao test
+		testBallotDao();
 	}
 	
 	/**
@@ -57,7 +59,41 @@ public class ExceedVoteDaoMain {
 	 * 3. Question is the Question of this Ballot
 	 */
 	public static void testBallotDao() {
-		// TODO
+		// Initialize BallotDao
+		BallotDao ballotDao = DaoFactory.getInstance().getBallotDao();
+		UserDao userDao = DaoFactory.getInstance().getUserDao();
+		ProjectDao projectDao = DaoFactory.getInstance().getProjectDao();
+		QuestionDao questionDao = DaoFactory.getInstance().getQuestionDao();
+		// Initialize and save User, Project, and Question for Ballot
+		User batman = new User("batman", "darkknightrises", "Bruce Wayne");
+		User rasalghul = new User("rasalghul", "leagueofshadow", "Ra's al Ghul");
+		userDao.save(batman);
+		userDao.save(rasalghul);
+		Project exceedvote = new Project("eXceed Vote", "Software Spec and Design Project");
+		Project worldnote = new Project("WorldNote", "BEST project in eXceed Camp #9!!! :D");
+		projectDao.save(exceedvote);
+		projectDao.save(worldnote);
+		Question popular = new Question("Popular Vote");
+		Question uinterface = new Question("Best User Interface Design");
+		questionDao.save(popular);
+		questionDao.save(uinterface);
+		// Create Ballot
+		Ballot ballotb1 = new Ballot(batman, worldnote, popular);
+		Ballot ballotb2 = new Ballot(batman, exceedvote, uinterface);
+		Ballot ballotr1 = new Ballot(rasalghul, worldnote, popular);
+		// Save Ballot to the database
+		ballotDao.save(ballotb1);
+		System.out.println("Saved batman's ballot 1 with id " + ballotb1.getId());
+		ballotDao.save(ballotb2);
+		System.out.println("Saved batman's ballot 2 with id " + ballotb2.getId());
+		ballotDao.save(ballotr1);
+		System.out.println("Saved rasalghul's ballot 1 with id " + ballotr1.getId());
+		// Retrieve all batman's Ballot
+		List<Ballot> batballots = ballotDao.findByUser(batman);
+		// Print all Ballot in batballots
+		for (Ballot ballot : batballots) {
+			System.out.println(ballot.toString());
+		}
 	}
 
 }

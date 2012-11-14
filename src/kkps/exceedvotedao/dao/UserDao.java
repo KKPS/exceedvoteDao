@@ -7,6 +7,8 @@ public interface UserDao {
 	
 	public User findById(int id);
 	
+	public User findByUser(String username);
+	
 	public List<User> findAll(); 
 	
 	public void save(User user);
