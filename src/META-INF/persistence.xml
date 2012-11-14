@@ -1,9 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<persistence version="2.0" xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
-	<persistence-unit name="exceedvoteDao">
+<persistence version="2.0"
+	xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence
+             http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
+	<persistence-unit name="exceedvotedao"
+		transaction-type="RESOURCE_LOCAL">
+		<provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
 		<class>kkps.exceedvotedao.models.User</class>
 		<class>kkps.exceedvotedao.models.Project</class>
 		<class>kkps.exceedvotedao.models.Question</class>
 		<class>kkps.exceedvotedao.models.Ballot</class>
+		<properties>
+			<property name="eclipselink.target-database" value="MYSQL" />
+			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost/exceedvotedao" />
+			<property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />
+			<property name="javax.persistence.jdbc.user" value="root" />
+			<!-- Only enable on first time you run the program (create database tables from entity class) -->
+			<!-- <property name="eclipselink.ddl-generation" value="drop-and-create-tables" />
+			<property name="eclipselink.ddl-generation.output-mode"
+				value="both" /> -->
+		</properties>
 	</persistence-unit>
 </persistence>

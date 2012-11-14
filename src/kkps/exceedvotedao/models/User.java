@@ -13,6 +13,7 @@ import javax.persistence.*;
 public class User implements Serializable {
 
 	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
 	private String username;
 	private String password;
@@ -59,6 +60,11 @@ public class User implements Serializable {
 
 	public void setFullName(String fullName) {
 		this.fullName = fullName;
+	}
+	
+	@Override
+	public String toString() {
+		return "- " + username + " (" + fullName + ")";
 	}
    
 }

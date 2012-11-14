@@ -14,6 +14,7 @@ import javax.persistence.*;
 public class Question implements Serializable {
 
 	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
 	private String question;
 	private static final long serialVersionUID = 1L;

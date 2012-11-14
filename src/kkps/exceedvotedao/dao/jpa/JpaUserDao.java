@@ -3,6 +3,7 @@ package kkps.exceedvotedao.dao.jpa;
 import java.util.List;
 
 import javax.persistence.EntityManager;
+import javax.persistence.EntityTransaction;
 
 import kkps.exceedvotedao.dao.UserDao;
 import kkps.exceedvotedao.models.User;
@@ -23,14 +24,16 @@ public class JpaUserDao implements UserDao {
 
 	@Override
 	public List<User> findAll() {
-		// TODO Auto-generated method stub
-		return null;
+		String query = "SELECT u FROM User u";
+		return em.createQuery(query).getResultList();
 	}
 
 	@Override
 	public void save(User user) {
-		// TODO Auto-generated method stub
-		
+		EntityTransaction tx = em.getTransaction();
+		tx.begin();
+		em.persist(user);
+		tx.commit();
 	}
 
 	@Override

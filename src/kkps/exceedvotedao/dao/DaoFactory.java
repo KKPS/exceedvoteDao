@@ -11,11 +11,15 @@ public abstract class DaoFactory {
 	
 	private static DaoFactory instance = null;
 	
-	private static DaoFactory getInstance() {
+	public static DaoFactory getInstance() {
 		if (instance == null) {
 			instance = new JpaDaoFactory();
 		}
 		return instance;
 	}
+	
+	public abstract BallotDao getBallotDao();
+	
+	public abstract UserDao getUserDao();
 
 }

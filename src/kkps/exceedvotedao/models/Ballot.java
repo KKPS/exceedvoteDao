@@ -3,6 +3,7 @@ package kkps.exceedvotedao.models;
 import java.io.Serializable;
 import java.lang.Long;
 import javax.persistence.*;
+
 import kkps.exceedvotedao.models.Project;
 import kkps.exceedvotedao.models.Question;
 import kkps.exceedvotedao.models.User;
@@ -17,6 +18,7 @@ public class Ballot implements Serializable {
 
 	   
 	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
 	@ManyToOne
 	@JoinColumn(name="user_id")
