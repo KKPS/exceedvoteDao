@@ -92,6 +92,15 @@ public class ExceedVoteDaoMain {
 		for (Ballot ballot : batballots) {
 			System.out.println(ballot.toString());
 		}
+		System.out.println("=============================");
+		// Get User from database
+		User get = userDao.findByUser("rasalghul");
+		System.out.println(get.toString());
+		// Get all "get" ballots
+		List<Ballot> getb = ballotDao.findByUser(get);
+		for (Ballot b : getb) {
+			System.out.println(b.toString());
+		}
 	}
 
 }
